@@ -16,6 +16,7 @@ public class EuchreServer {
      */
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        System.out.println("add to a branch, now lets put it online");
     }
     
 }
