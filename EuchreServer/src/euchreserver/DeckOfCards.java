@@ -16,6 +16,9 @@ import java.util.List;
 public class DeckOfCards {
     private List<Card> list;
     
+    /**
+     * Constructor, creates a deck of 24 cards, shuffled.
+     */
     public DeckOfCards()
     {
         Card[] deck = new Card [24];
@@ -34,6 +37,21 @@ public class DeckOfCards {
         Collections.shuffle(list);
     }
     
+    /**
+     * NEEDS TEST, returns and removes the first 5 cards from the list.
+     * @return a List of 5 cards
+     */
+    public List<Card> getFiveCards()
+    {
+        List temp = list.subList(0, 4);
+        for(int i = 0; i <5; i++)
+        list.remove(1);
+        return temp;
+    }
+    
+    /**
+     * basically toString
+     */
     public void printCards()
     {
         for(int i = 0; i < list.size(); i++)
