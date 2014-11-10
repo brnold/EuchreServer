@@ -5,6 +5,8 @@
  */
 package euchreserver;
 
+import java.util.Arrays;
+
 /**
  *
  * @author brnold
@@ -18,6 +20,14 @@ public class EuchreServer {
         System.out.println("Hello World!");
         System.out.println("add to a branch, now lets put it online");
         System.out.println("Well is this going to make it too?");
+        
+        DeckOfCards deck = new DeckOfCards();
+        
+        
+        
+        Hand hand1;
+       // hand1 = new Hand(Arrays.copyOfRange(deck, 0, 3));
+        
     }
     
 }
