@@ -13,14 +13,28 @@ import java.util.List;
  */
 public class Player {
     List<Card> hand;
-    String name;
-    int id;
+    private String name;
+    private int id;
     
     public Player(String n, int id, List<Card> hand)
     {
         name = n;
         id = this.id;
         hand = this.hand;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
     }
     
     

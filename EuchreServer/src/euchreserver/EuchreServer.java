@@ -6,7 +6,10 @@
 package euchreserver;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Arrays;
 
 /**
@@ -39,17 +42,21 @@ public void listenSocket(int port){
   try{
     server = new ServerSocket(port);
   } catch (IOException e) {
+    System.out.println(e);
     System.out.println("Could not listen on port " + port);
     System.exit(-1);
   }
+  
   while(true){
-    //ClientWorker w;
+
     try{
 //server.accept returns a client connection
-      //w = new ClientWorker(server.accept(), textArea);
+      Socket socket = server.accept();
+      
       //Start a new client object
-        Thread t = new Thread(w);
-      t.start();
+      clientThread cT = new clientThread(socket);
+      Thread t = new Thread(cT);
+      cT.run();
     } catch (IOException e) {
       System.out.println("Accept failed: " + port);
       System.exit(-1);
