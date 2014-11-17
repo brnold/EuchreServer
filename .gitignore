@@ -1,2 +1,7 @@
+<<<<<<< OURS
+/EuchreServer/nbproject/private/
+=======
 /EuchreServer/nbproject/private/
 /EuchreServer/build/
+>>>>>>> THEIRS
+/EuchreServer/dist/
