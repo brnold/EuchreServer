@@ -47,7 +47,7 @@ public class EuchreServer
         //okay, now we have a list of clients, and a queue we can do our game logic
         handleQueue();
 
-        deck = new DeckOfCards();
+        //deck = new DeckOfCards();
 
         /*
          We are going to need a wrapper class for the queue. Basically a boolean, int and object
@@ -78,7 +78,9 @@ public class EuchreServer
 
     public void get4Clients()
     {
-        while (numPlayers < 5)
+        int i = 0;
+//while (numPlayers < 5)
+        while(i < 4)
         {
 
             try
@@ -88,13 +90,14 @@ public class EuchreServer
 
                 (new Thread(new clientThread(socket, qIn, qOut, this))).start(); //Starts a client thread
 
-                echo();
+            
 
             } catch (IOException e)
             {
                 System.out.println("Accept failed: ");
                 System.exit(-1);
             }
+        i++;
         }
     }
 
@@ -127,9 +130,8 @@ public class EuchreServer
 
     public void handleQueue()
     {
-        Object o;
         //read queue, deal with item. 
-        //BRIAN, THIS IS WHERE THE GAME LOGIC WILL GO!
+        
         while (1 == 1)
         {
 
@@ -143,7 +145,7 @@ public class EuchreServer
 
     /**
      * Attention Brian, this is where the game logic goes. check what the object
-     * type is.
+     * type is then deal with it.
      */
     private void handleOneQueue(int i)
     {
@@ -157,9 +159,12 @@ public class EuchreServer
             {
                 o = qIn.take();
 
-                if (o instanceof Pile)
+                if (o instanceof java.lang.String)
                 {
-
+                    //This is a test
+                    String s = (String) o + "YAH YAH SERVER GOT THIS FROM " + i;
+                    qOut.put(s);
+                    outOtherQueues(i, s);
                 }
             } catch (InterruptedException ex)
             {
@@ -173,26 +178,35 @@ public class EuchreServer
          * one queue
          * @param o This is the object to be put in the queue
          */
-    private void outOtherQueues(int i, Object o)
+    private void outOtherQueues(int i, Object o) throws InterruptedException
     {
+        LinkedBlockingQueue qOut; 
+        
         if (i != 0)
         {
-            //send oubject out this queue
+            qOut = outQueue.get(0);
+            qOut.put(o);
         }
 
         if (i != 1)
         {
             //send oubject out this queue
+            qOut = outQueue.get(1);
+            qOut.put(o);
         }
 
         if (i != 2)
         {
             //send oubject out this queue
+            qOut = outQueue.get(2);
+            qOut.put(o);
         }
 
         if (i != 3)
         {
             //send oubject out this queue
+            qOut = outQueue.get(3);
+            qOut.put(o);
         }
     }
 
