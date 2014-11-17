@@ -55,7 +55,8 @@ public class clientThread implements Runnable
                 if (objectin.available() > 0)
                 {
                     o = objectin.readObject();
-
+                    
+                    
                     if (o instanceof java.lang.String)
                     {
                         //set the name of the client
