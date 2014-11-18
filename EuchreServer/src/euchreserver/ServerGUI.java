@@ -117,7 +117,7 @@ public class ServerGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         
-        gameServer = new EuchreServer();
+        gameServer = new EuchreServer(1400);
      
         gameServer.listenSocket(Integer.parseInt(jTextField2.getText()));
         //disable button to prohibit multiple servers from running

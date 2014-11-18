@@ -29,10 +29,15 @@ public class EuchreServer
     private LinkedBlockingQueue qIn, qOut; //Might not need this
     wrapperForQueue qFQ;
 
+    
+    public static void main(String args[])
+    {
+        EuchreServer e = new EuchreServer(1400);
+    }
     /**
      * @param args the command line arguments
      */
-    public void EuchreServer(int port)
+    public EuchreServer(int port)
     {
         System.out.println("Hello World!");
         System.out.println("add to a branch, now lets put it online");
